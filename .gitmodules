@@ -4,5 +4,5 @@
 	branch = v1.13.x
 [submodule "AI/FuzzyLite"]
 	path = AI/FuzzyLite
-	url = https://github.com/fuzzylite/fuzzylite.git
-	branch = release
+	url = git@github.com:luxufan/fuzzylite.git
+	branch = test-suite
