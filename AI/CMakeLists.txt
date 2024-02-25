@@ -2,6 +2,8 @@
 #        FuzzyLite support            #
 #######################################
 
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/vcmi")
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/vcmi")
 if(NOT WIN32 AND NOT APPLE)
 	option(FORCE_BUNDLED_FL "Force to use FuzzyLite included into VCMI's source tree" ON)
 else()
@@ -40,7 +42,7 @@ if(NOT fuzzylite_FOUND)
 	endif()
 	add_subdirectory(FuzzyLite/fuzzylite EXCLUDE_FROM_ALL)
 	add_library(fuzzylite::fuzzylite ALIAS fl-static)
-	target_include_directories(fl-static PUBLIC ${CMAKE_HOME_DIRECTORY}/AI/FuzzyLite/fuzzylite)
+	target_include_directories(fl-static PUBLIC ${CMAKE_SOURCE_DIR}/AI/FuzzyLite/fuzzylite)
 endif()
 
 #######################################

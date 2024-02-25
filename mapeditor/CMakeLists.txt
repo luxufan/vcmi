@@ -117,6 +117,8 @@ set(editor_TS
 	translation/vietnamese.ts
 )
 
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/vcmi")
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/vcmi")
 assign_source_group(${editor_SRCS} ${editor_HEADERS} mapeditor.rc)
 
 # Tell CMake to run moc when necessary:

@@ -269,6 +269,8 @@ set(lib_SRCS
 	VCMI_Lib.cpp
 )
 
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/vcmi")
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/vcmi")
 # Version.cpp is a generated file
 if(ENABLE_GITVERSION)
 	list(APPEND lib_SRCS ${CMAKE_BINARY_DIR}/Version.cpp)
@@ -677,7 +679,8 @@ assign_source_group(${lib_SRCS} ${lib_HEADERS})
 if(ENABLE_STATIC_LIBS)
 	add_library(vcmi STATIC ${lib_SRCS} ${lib_HEADERS})
 else()
-	add_library(vcmi SHARED ${lib_SRCS} ${lib_HEADERS})
+    list(APPEND TEST_TARGETS vcmi)
+	llvm_test_library(vcmi SHARED ${lib_SRCS} ${lib_HEADERS})
 endif()
 set_target_properties(vcmi PROPERTIES COMPILE_DEFINITIONS "VCMI_DLL=1")
 target_link_libraries(vcmi PUBLIC
@@ -708,6 +711,7 @@ if(APPLE_IOS)
 	target_link_libraries(vcmi PUBLIC iOS_utils)
 endif()
 
+message("target include: ${CMAKE_SOURCE_DIR}")
 target_include_directories(vcmi
 	PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 	PUBLIC ${CMAKE_SOURCE_DIR}

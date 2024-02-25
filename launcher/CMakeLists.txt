@@ -65,6 +65,8 @@ if(APPLE_IOS)
 	)
 endif()
 
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/vcmi")
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/vcmi")
 assign_source_group(${launcher_SRCS} ${launcher_HEADERS} VCMI_launcher.rc)
 
 # Tell CMake to run moc when necessary:

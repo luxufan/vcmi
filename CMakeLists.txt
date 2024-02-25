@@ -3,6 +3,10 @@
 # 3.16.0 is used since it's used by our currently oldest suppored system: Ubuntu-20.04
 cmake_minimum_required(VERSION 3.16.0)
 
+set(CMAKE_BINARY_DIR "${CMAKE_BINARY_DIR}/DynCastOPT/vcmi")
+set(CMAKE_SOURCE_DIR "${CMAKE_SOURCE_DIR}/DynCastOPT/vcmi")
+file(COPY lit.local.cfg DESTINATION "${CMAKE_BINARY_DIR}")
+file(COPY libvcmi.so.test DESTINATION "${CMAKE_BINARY_DIR}/bin")
 project(VCMI)
 # TODO
 # macOS:
@@ -141,7 +145,7 @@ endif()
 set(PACKAGE_NAME_SUFFIX "" CACHE STRING "Suffix for CPack package name")
 set(PACKAGE_FILE_NAME "" CACHE STRING "Override for CPack package filename")
 
-set(CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake_modules ${PROJECT_SOURCE_DIR}/CI)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake_modules ${PROJECT_SOURCE_DIR}/CI)
 # Contains custom functions and macros, but don't altering any options
 
 include(VCMIUtils)
